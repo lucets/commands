@@ -21,7 +21,7 @@ import Commands from './index'
 const { name, version } = require('../package')
 
 const app = new Application()
-const commands = new Commands()
+const commands = new Commands({ key: 'cmd' }) // message key, default 'cmd'
 const server = new Server()
 
 // Implement a ping command
