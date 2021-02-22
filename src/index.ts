@@ -3,11 +3,22 @@
 import { DefaultContext, DefaultMessage, DefaultState } from '@lucets/luce'
 import MessageHooks, { MessageHook } from '@lucets/luce/dist/lib/MessageHooks'
 
+/** Commands options */
+export interface CommandsOptions {
+  /** The message key to use as the command key */
+  key?: string
+}
+
 export default class Commands<
   TMessage extends DefaultMessage = DefaultMessage,
   TState extends DefaultState = DefaultState
 > {
+  #key: string
   #messageHooks: Map<string, MessageHook<TMessage, DefaultContext<TMessage, TState>>[]> = new Map()
+
+  public constructor ({ key }: CommandsOptions = {}) {
+    this.#key = key ?? 'cmd'
+  }
 
   /**
    * Use one or more message hooks for the given command.
@@ -33,19 +44,19 @@ export default class Commands<
    */
   public compose (): MessageHook<TMessage, DefaultContext<TMessage, TState>> {
     return async (message, ctx, next) => {
-      if (!message.cmd) {
+      if (!message[this.#key]) {
         // Hand off to the next hook
         return next()
       }
 
-      const hooks = this.#messageHooks.get(message.cmd)
+      const hooks = this.#messageHooks.get(message[this.#key])
 
       if (!hooks) {
         // Hand off to the next hook
         return next()
       }
 
-      // Comppse and execute the hooks
+      // Compose and execute the hooks
       const composed = MessageHooks.compose(...hooks)
       return composed(message, ctx, async () => {})
     }
