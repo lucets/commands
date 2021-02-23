@@ -25,6 +25,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@lucets/luce": "^0.1.0"
+    "@lucets/luce": "^0.2.0",
+    "@lucets/message-hooks": "^0.1.0"
   }
 }

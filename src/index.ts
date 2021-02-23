@@ -1,7 +1,7 @@
 'use strict'
 
 import { DefaultContext, DefaultMessage, DefaultState } from '@lucets/luce'
-import MessageHooks, { MessageHook } from '@lucets/luce/dist/lib/MessageHooks'
+import MessageHooks, { MessageHook } from '@lucets/message-hooks'
 
 /** Commands options */
 export interface CommandsOptions {
