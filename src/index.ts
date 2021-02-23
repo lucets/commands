@@ -26,6 +26,10 @@ export default class Commands<
    * @param hooks One or more message hooks
    */
   public use (cmd: string, ...hooks: MessageHook<TMessage, DefaultContext<TMessage, TState>>[]): this {
+    if (!hooks.length) {
+      throw new TypeError('use() expects at least one hook')
+    }
+
     const arr = this.#messageHooks.get(cmd) ?? []
 
     if (!arr.length) {
