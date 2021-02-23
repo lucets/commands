@@ -49,7 +49,7 @@ commands.use('publish', async (message, ctx, next) => {
 app.useMessage(commands.compose(), async (message, ctx, next) => {
   await ctx.send({
     cmd: 'error',
-    message: `unknown command: ${message.cmd ?? 'none'}`
+    message: `unknown command: ${message[commands.key] ?? 'none'}`
   })
 })
 

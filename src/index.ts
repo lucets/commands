@@ -13,11 +13,11 @@ export default class Commands<
   TMessage extends DefaultMessage = DefaultMessage,
   TState extends DefaultState = DefaultState
 > {
-  #key: string
+  public readonly key: string
   #messageHooks: Map<string, MessageHook<TMessage, DefaultContext<TMessage, TState>>[]> = new Map()
 
   public constructor ({ key }: CommandsOptions = {}) {
-    this.#key = key ?? 'cmd'
+    this.key = key ?? 'cmd'
   }
 
   /**
@@ -48,12 +48,12 @@ export default class Commands<
    */
   public compose (): MessageHook<TMessage, DefaultContext<TMessage, TState>> {
     return async (message, ctx, next) => {
-      if (!message[this.#key]) {
+      if (!message[this.key]) {
         // Hand off to the next hook
         return next()
       }
 
-      const hooks = this.#messageHooks.get(message[this.#key])
+      const hooks = this.#messageHooks.get(message[this.key])
 
       if (!hooks) {
         // Hand off to the next hook
