@@ -47,8 +47,8 @@ commands.use('publish', async (message, ctx, next) => {
   return next()
 }, async (message, ctx, next) => {
   if (!message.package) {
-    // 4440 - Bad Request
-    throw new WebSocketError(4440)
+    // 4400 - Bad Request
+    throw new WebSocketError(4400)
   }
   return next()
 }, async (message, _ctx, next) => {
