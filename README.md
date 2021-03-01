@@ -2,6 +2,8 @@
 
 Message hook which allows setting hooks for individual commands.
 
+Designed to be used with [Luce](https://github.com/lucets/luce).
+
 ## Install
 
 ```
