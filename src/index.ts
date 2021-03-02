@@ -47,7 +47,7 @@ export default class Commands<
    * Compose the combined message hook.
    */
   public compose (): MessageHook<TMessage, DefaultContext<TMessage, TState>> {
-    return async (message, ctx, next) => {
+    return async function composed (message, ctx, next) {
       if (!message[this.key]) {
         // Hand off to the next hook
         return next()
