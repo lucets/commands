@@ -26,6 +26,14 @@ const app = new Application()
 const commands = new Commands({ key: 'cmd' }) // message key, default 'cmd'
 const server = new Server()
 
+// Implement a catch-all hook
+commands.use('*', async (message, ctx) => {
+  return ctx.send({
+    cmd: 'error',
+    message: `Unknown command: ${message[commands.key]}`
+  })
+})
+
 // Implement a ping command
 commands.use('ping', async (message, ctx, next) => {
   await ctx.send({ cmd: 'pong' })
