@@ -53,7 +53,7 @@ export default class Commands<
         return next()
       }
 
-      const hooks = this.#messageHooks.get(message[this.key])
+      const hooks = this.#messageHooks.get(message[this.key]) ?? this.#messageHooks.get('*')
 
       if (!hooks) {
         // Hand off to the next hook
