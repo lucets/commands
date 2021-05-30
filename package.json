@@ -25,11 +25,10 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@lucets/luce": "^0.4.0",
+    "@lucets/luce": "^0.4.2",
     "@lucets/message-hooks": "^0.1.0"
   },
   "devDependencies": {
-    "@types/node": "^14.14.41",
-    "@types/ws": "^7.4.1"
+    "@types/node": "^15.6.1"
   }
 }
