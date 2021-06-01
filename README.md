@@ -2,7 +2,11 @@
 
 Message hook which allows setting hooks for individual commands.
 
-Designed to be used with [Luce](https://github.com/lucets/luce).
+Designed to be used with [Luce](https://github.com/lucets/luce),
+but can be used stand-alone as well.
+
+See [@lucets/message-hooks](https://github.com/lucets/message-hooks)
+for more information about how message hooks work.
 
 ## Install
 
